@@ -1,3 +1,4 @@
+// $codepro.audit.disable platformSpecificLineSeparator
 package edu.towson.cis.cosc442.project4.coffeemaker;
 
 /**
@@ -124,10 +125,10 @@ public class Inventory {
      * Method toString.
      * @return String
      */
-    public String toString() {
-    	return "Coffee: " + getCoffee() + "\n" +
-			"Milk: " + getMilk() + "\n" +
-			"Sugar: " + getSugar() + "\n" +
+    public String toString() { // $codepro.audit.disable platformSpecificLineSeparator
+    	return "Coffee: " + getCoffee() + "\n" + // $codepro.audit.disable platformSpecificLineSeparator
+			"Milk: " + getMilk() + "\n" + // $codepro.audit.disable platformSpecificLineSeparator
+			"Sugar: " + getSugar() + "\n" + // $codepro.audit.disable platformSpecificLineSeparator
 			"Chocolate: " + getChocolate() + "\n";
     }
 }

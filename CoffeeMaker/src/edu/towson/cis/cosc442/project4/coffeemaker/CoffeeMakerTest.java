@@ -39,4 +39,18 @@ public class CoffeeMakerTest extends TestCase {
 		newRecipe.setAmtSugar(2);
 		assertTrue(cm.editRecipe(r1, newRecipe));
 	}
+	
+	public void testAddInventory1(){
+		cm.addInventory(1, 1, 1, 1);
+	}
+	
+	public void testAddInventory2(){
+		cm.addInventory(1, 1, 1, -1);
+	}
+	
+	public void testMakeCoffee1(){
+		cm.addRecipe(r1);
+		
+	}
+	
 }

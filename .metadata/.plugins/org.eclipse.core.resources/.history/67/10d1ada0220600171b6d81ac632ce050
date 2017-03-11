@@ -1,0 +1,35 @@
+/**
+ * 
+ */
+
+package edu.towson.cis.cosc442.project4.coffeemaker;
+
+import junit.framework.TestCase;
+
+/**
+ *
+ */
+public class InventoryTest extends TestCase {
+	private Recipe r1 = new Recipe();
+	
+	
+	private void SetUp(){
+		r1.setName("Coffee");
+		r1.setPrice(50);
+		r1.setAmtCoffee(0);
+		r1.setAmtMilk(1);
+		r1.setAmtSugar(1);
+		r1.setAmtChocolate(0);
+	}
+	
+	private Inventory i = new Inventory();
+	
+	public void testToString(){
+		System.out.println(i.toString());
+	}
+	
+	public void testEnoughIngredients(){
+		i.enoughIngredients(r1);
+	}
+	
+}

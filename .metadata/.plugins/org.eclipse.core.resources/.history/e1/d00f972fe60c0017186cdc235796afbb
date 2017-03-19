@@ -25,11 +25,11 @@ public class InventoryTest extends TestCase {
 	
 	public void testEnoughIngredients(){
 		r1.setName("Coffee");
-		r1.setPrice(14);
-		r1.setAmtCoffee(14);
-		r1.setAmtMilk(14);
-		r1.setAmtSugar(14);
-		r1.setAmtChocolate(14);
+		r1.setPrice(15);
+		r1.setAmtCoffee(15);
+		r1.setAmtMilk(15);
+		r1.setAmtSugar(15);
+		r1.setAmtChocolate(15);
 		assertTrue(i.enoughIngredients(r1));
 	}
 	
@@ -40,7 +40,7 @@ public class InventoryTest extends TestCase {
 		r1.setAmtMilk(16);
 		r1.setAmtSugar(16);
 		r1.setAmtChocolate(16);
-		assertFalse(i.enoughIngredients(r1));
+		assertTrue(i.enoughIngredients(r1));
 	}
 	
 	public void testSetChocolate(){

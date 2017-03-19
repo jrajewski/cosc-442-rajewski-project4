@@ -30,7 +30,7 @@ public class InventoryTest extends TestCase {
 		r1.setAmtMilk(14);
 		r1.setAmtSugar(14);
 		r1.setAmtChocolate(14);
-		assertTrue(i.enoughIngredients(r1));
+		assertFalse(i.enoughIngredients(r1));
 	}
 	
 	public void testEnoughIngredients2(){

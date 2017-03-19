@@ -55,4 +55,13 @@ public class RecipeTest extends TestCase{
 		assertEquals(r1.getAmtChocolate(), 0);
 	}
 	
+	public void testSetAmtMilk(){
+		r1.setAmtMilk(-1);
+		assertEquals(r1.getAmtMilk(), 0);
+	}
+	
+	public void testSetAmtSugar(){
+		r1.setAmtSugar(-1);
+		assertEquals(r1.getAmtSugar(), 0);
+	}
 }

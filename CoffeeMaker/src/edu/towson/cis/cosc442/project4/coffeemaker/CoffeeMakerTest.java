@@ -8,8 +8,8 @@ import junit.framework.TestCase;
 public class CoffeeMakerTest extends TestCase {
 	private CoffeeMaker cm;
 	private Inventory i;
-	private Recipe r1;
-	private Recipe r2;
+	private Recipe r1, r2, r3, r4;
+	
 
 	public void setUp() {
 		cm = new CoffeeMaker();
@@ -30,15 +30,42 @@ public class CoffeeMakerTest extends TestCase {
 		r2.setAmtMilk(1);
 		r2.setAmtSugar(1);
 		r2.setAmtChocolate(0);
+		
+		r3 = new Recipe();
+		r3.setName("Coffee2");
+		r3.setPrice(50);
+		r3.setAmtCoffee(1);
+		r3.setAmtMilk(1);
+		r3.setAmtSugar(1);
+		r3.setAmtChocolate(0);
+		
+		r4 = new Recipe();
+		r4.setName("Coffee4");
+		r4.setPrice(50);
+		r4.setAmtCoffee(6);
+		r4.setAmtMilk(1);
+		r4.setAmtSugar(1);
+		r4.setAmtChocolate(1);
 	}
 
 	public void testAddRecipe1() {
 		assertTrue(cm.addRecipe(r1));
 	}
+	
+	//test to kill the negated conditional mutation
+	public void testAddRecipe2(){
+		
+	}
 
 	public void testDeleteRecipe1() {
 		cm.addRecipe(r1);
 		assertTrue(cm.deleteRecipe(r1));
+	}
+	
+	//test to kill negated conditional mutant
+	public void testDeleteRecipe2(){
+		cm.addRecipe(r1);
+		assertFalse(cm.deleteRecipe(r2));
 	}
 
 	public void testEditRecipe1() {
@@ -50,11 +77,28 @@ public class CoffeeMakerTest extends TestCase {
 	}
 	
 	public void testAddInventory1(){
-		cm.addInventory(1, 1, 1, 1);
+		assertTrue(cm.addInventory(1, 1, 1, 1));
 	}
 	
 	public void testAddInventory2(){
-		cm.addInventory(1, 1, 1, -1);
+		assertFalse(cm.addInventory(1, 1, 1, -1));
+	}
+	
+	//test cases to kill 8 mutants
+	public void testAddInventory3(){
+		assertFalse(cm.addInventory(-1, 0, 0, 0));
+		assertFalse(cm.addInventory(0, -1, 0, 0));
+		assertFalse(cm.addInventory(0, 0, -1, 0));
+		assertFalse(cm.addInventory(0, 0, 0, -1));
+	}
+	
+	public void testAddInventory4(){
+		i = cm.checkInventory();
+		assertTrue(cm.addInventory(1, 1, 1, 1));
+		assertTrue(i.getChocolate() == 16);
+		assertTrue(i.getCoffee() == 16);
+		assertTrue(i.getMilk() == 16);
+		assertTrue(i.getSugar() == 16);
 	}
 	
 	public void testMakeCoffee1(){
@@ -71,9 +115,19 @@ public class CoffeeMakerTest extends TestCase {
 	
 	//should not have enough ingredients
 	public void testMakeCoffee3(){
-		
-		
-		cm.makeCoffee(r2, 50);
+		assertTrue(cm.makeCoffee(r2, 50) == 0);
+	}
+	
+	public void testMakeCoffee4(){
+		assertTrue(cm.makeCoffee(r1, 50) == 0);
+	}
+	
+	public void testMakeCoffee5(){
+		cm.makeCoffee(r4, 50);
+		assertTrue(i.getCoffee() == 9);
+		assertTrue(i.getMilk() == 14);
+		assertTrue(i.getSugar() == 14);
+		assertTrue(i.getChocolate() == 14);
 	}
 	
 	public void testGetRecipeForName(){

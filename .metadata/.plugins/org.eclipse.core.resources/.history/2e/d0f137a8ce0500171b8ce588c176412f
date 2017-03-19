@@ -1,5 +1,0 @@
-package edu.towson.cis.cosc442.project4.coffeemaker;
-
-import org.junit.runner.JUnitCore;
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
